@@ -14,6 +14,7 @@ import { Avatar } from "@material-ui/core";
 
 function Header() {
     const history = useHistory();
+    const { user } = useAuthState(); //Nice; dit in combi met {user.username} op R74 geeft username in de header
 
     //context dingen
 
@@ -70,7 +71,7 @@ function Header() {
                     <>
                         <div className="header_info">
                             <Avatar />
-                            <h4>Iris Dekker</h4>
+                            <h4>{user.username}</h4>
                                 <button
                                     type="button"
                                     onClick={() => logout()}

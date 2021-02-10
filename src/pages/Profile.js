@@ -3,8 +3,10 @@ import { Link } from 'react-router-dom';
 import {useAuthState} from "../context/AuthContext";
 import axios from "axios";
 
+
 function Profile() {
     const { user } = useAuthState();
+    //const { admin } = useState();
 
     //Wil je beschermde data uitlezen? stap 4 in de backend handleiding op film 02:28:30/ ->Stap 8 Nova
     //Dan zet je hier weer een useEffect met lege [] dependency array
@@ -51,19 +53,26 @@ function Profile() {
 
     return (
         <>
-            <h1>Profielpagina</h1>
-            <h2>Gegevens</h2>
-            { user && (
-                <>
-                    <p><strong>Gebruikersnaam:</strong> {user.username}</p>
-                    <p><strong>Email:</strong> {user.email}</p>
-                </>
-            )}
+            <div className="app_body">
 
-            <h2>Afgeschermde content voor ingelogde gebruikers</h2>
-            {protectedData && <p>{protectedData}</p>}
-            {error && <p className="message-error">{error}</p>}
-            <p>Terug naar de <Link to="/">Homepagina</Link></p>
+
+
+                <h1>Profielpagina</h1>
+                <h2>Gegevens</h2>
+                { user && (
+                    <>
+                        <p><strong>Gebruikersnaam:</strong> {user.username}</p>
+                        <p><strong>Email:</strong> {user.email}</p>
+                        {/*<p><strong>All</strong> {admin.all}</p>*/}
+                    </>
+                )}
+
+                <h2>Afgeschermde content voor ingelogde gebruikers</h2>
+                {protectedData && <p>{protectedData}</p>}
+                {error && <p className="message-error">{error}</p>}
+                <p>Terug naar de <Link to="/">Homepagina</Link></p>
+
+            </div>
 
         </>
     );

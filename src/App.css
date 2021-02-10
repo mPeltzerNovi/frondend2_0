@@ -6,7 +6,7 @@
 .header_input {
   display: flex;
   align-items: center;
-  background-color: gray;
+  background-color: lightgray;
   padding: 10px;
   margin-left: 10px;
   border-radius: 999px;

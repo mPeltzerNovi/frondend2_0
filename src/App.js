@@ -26,9 +26,10 @@ function App() {
                <div className="app_body">
                     <Sidebar />    {/*Hier moet je de components voor importeren beveiligde deel, is ook kwestie van uitzetten straks*/}
                     <Feed />
-
+               </div>
+                {/*waarschijnlijk leer ik later hoe je deze hieronder weer onder de volgende components zet.*/}
+               <div>
                     {isAuthenticated ? <Profile /> : <Redirect to="/signin" />}
-
                </div>
             </Route>
 

@@ -1,3 +1,9 @@
+.app {
+  background-color: #eff2f5;
+  height: 100vh;
+}
+{/*Hierboven werkt waarschijnlijk niet maar dat is geen probleem*/}
+
 .app_body {
   display: flex;
 }

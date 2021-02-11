@@ -16,7 +16,7 @@ function Sidebar() {
         <div className="sidebar">
             {/*<SidebarRow src={gebruiker.photoURL} title={gebruiker.displayName} />*/}
             <SidebarRow src='https://upload.wikimedia.org/wikipedia/commons/9/93/Mariah_Carey_WBLS_2018_Interview_2.jpg'
-                        title='Ilona de Wolf' />
+                        title='John Jansen' />
             <SidebarRow Icon={LocalHospitalIcon} title="COVID-19 Information Center" />
             <SidebarRow Icon={EmojiFlagsIcon} title="Pages" />
             <SidebarRow Icon={PeopleIcon} title="Friends" />

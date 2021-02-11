@@ -56,24 +56,9 @@ function Profile() {
 
     return (
         <>
-            <div className="app_body">
-                {/*<Sidebar />*/}
-                <div className="feed">
-                    <div className="storyReel">
-                        {/*<img src="https://upload.wikimedia.org/wikipedia/en/8/8c/Facebook_Home_logo_old.svg" alt=""/>*/}
-                        {/* Ik denk dat je hier toch een soort component containner moet maken zoals hij*/}
-                        {/* Desnoods zet je er een paar zo op een rijtje en style je het via "storyReel"*/}
-                        {/* Van dat rijtje maak je dan knoppen*/}
-                        {/* Het zou goed kunnen dat als ik fris opnieuw met die verschillende components maken*/}
-                        {/* aan de slag ga, ik het wel voor elkaar krijg.*/}
-                    </div>
+            <div>
+                {/*<Sidebar />  die kwam hier dus niet!!!! Maar in App.js*/}
 
-                    <div className="messageSender">
-
-                    </div>
-
-
-                </div>
 
 
 

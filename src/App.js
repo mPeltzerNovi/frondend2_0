@@ -7,6 +7,7 @@ import SignIn from './pages/SignIn';
 import SignUp from './pages/SignUp';
 import './App.css';
 import { useAuthState } from "./context/AuthContext";
+import Sidebar from "./Sidebar";
 //die import Redirect from 'react-router-dom' , daar ging het mis. moest je nog toevoegen
 
 function App() {
@@ -21,7 +22,9 @@ function App() {
             </Route>
             {/*Als je geen specifieke private route maakt, kan je hem ook zo opslaan (zie react les8)*/}
             <Route path="/profile">
+                <Sidebar />    {/*Hier moet je de components voor importeren beveiligde deel*/}
               {isAuthenticated ? <Profile /> : <Redirect to="/signin" />}
+
             </Route>
 
             <Route path="/signin">

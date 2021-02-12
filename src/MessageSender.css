@@ -14,12 +14,12 @@
     padding: 15px;
 }
 
-.messageSender_top > form2 {
+.messageSender_top > form {
     flex: 1;
     display: flex;
 }
 
-.messageSender_top > form2 > input {
+.messageSender_top > form > input {
     outline-width: 0;
     border: none;
     padding: 5px 20px;
@@ -28,7 +28,7 @@
     background-color: #eff2f5;
 }
 
-.messageSender_top > form2 > button {
+.messageSender_top > form > button {
     display: none;
 }
 

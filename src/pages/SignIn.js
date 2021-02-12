@@ -61,7 +61,7 @@ function SignIn() {
             <h1>Inloggen</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
 
-            <form onSubmit={onSubmit}>
+            <form className="login" onSubmit={onSubmit}>
                 <label htmlFor="username-field">
                     Gebruikersnaam:
                     <input

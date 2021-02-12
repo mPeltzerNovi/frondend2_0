@@ -69,7 +69,7 @@ function SignUp() {
             {createUserSuccess === true && (
                 <h2 className="message-success">Het is gelukt! Klik <Link to="/signin">hier</Link> om je in te loggen </h2>
             )}
-            <form onSubmit={onSubmit}>
+            <form className="login" onSubmit={onSubmit}>
                 <label htmlFor="email-field">
                     Email:
                     <input

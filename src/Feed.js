@@ -13,10 +13,10 @@ function Feed() {
 
             <Post
                 profilePic="https://www.prodirectrunning.com/productimages/V3_1_Main/161593.jpg"
-                message="Deauville was geweldig Judith!!! Aanrader voor iederen!"
+                message="Deauville was geweldig!!! Aanrader voor iederen!"
                 timestamp="This is a timestamp"
                 username="Claudia"
-                image="https://oya.com/brokerage/melges/Image3.jpg"
+                image="https://www.laserinternational.org/wp-content/uploads/2016/12/Vaughn-Harrison-Hiking-in-Mexico-940x438-840x438.jpg"
             />
             <Post
                 profilePic="https://outdoor-and-country-res.cloudinary.com/image/upload/e_trim:2/bo_8px_solid_white/c_pad,b_white,w_1000,h_1200,f_auto,q_auto/v1581524995/product/234544.jpg"

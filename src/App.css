@@ -1,3 +1,4 @@
+
 .app {
   background-color: #eff2f5;
   height: 100vh;
@@ -113,7 +114,7 @@ button + button {
   margin-left: 8px;
 }
 
-form {
+form.login {
   display: flex;
   flex-direction: column;
   background-color: #ededed;
@@ -122,12 +123,12 @@ form {
   border-radius: 4px;
 }
 
-form label {
+form.login label {
   margin: 4px 0;
   font-weight: bold;
 }
 
-form input {
+form.login input {
   width: 100%;
   padding: 4px 8px;
   margin: 6px 0;

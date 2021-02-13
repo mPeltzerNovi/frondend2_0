@@ -2,14 +2,22 @@ import React from 'react';
 import "./StoryReel.css";
 import Story from "./Story";
 
+import { useHistory } from 'react-router-dom';
+
 function StoryReel() {
+
+    const history = useHistory();
+
     return (
         <div className="storyReel">
-            <Story
-                image="https://www.wanderlustingk.com/wp-content/uploads/2017/11/belgium-208_orig.jpg"
-                profileSrc="https://df0a04043ae3b0be60ce-0769ebb99367e103e6cc409064fb3339.ssl.cf2.rackcdn.com/0ca859f6-8fa4-482e-b70c-abfdbc49cf54__L.jpg"
-                title="Durbuy"
-            />
+            <button type="storyReel_button" onClick={() => history.push('/Durbuy')}>
+                <Story
+                    image="https://www.wanderlustingk.com/wp-content/uploads/2017/11/belgium-208_orig.jpg"
+                    profileSrc="https://df0a04043ae3b0be60ce-0769ebb99367e103e6cc409064fb3339.ssl.cf2.rackcdn.com/0ca859f6-8fa4-482e-b70c-abfdbc49cf54__L.jpg"
+                    title="Durbuy"
+                />
+            </button>
+
             <Story
                 image="https://images.trvl-media.com/media/content/shared/images/travelguides/destination/2114/London-City-Hall-167154.jpg"
                 profileSrc="https://s1.thcdn.com/productimg/600/600/11319445-1134415917821882.jpg"
@@ -30,6 +38,7 @@ function StoryReel() {
                 profileSrc="https://www.prodirectrunning.com/ProductImages/Main/216470_Main_Thumb_0647241.jpg"
                 title="Hattem"
             />
+
 
         </div>
     )

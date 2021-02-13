@@ -8,7 +8,8 @@ import SignUp from './pages/SignUp';
 import './App.css';
 import { useAuthState } from "./context/AuthContext";
 import Sidebar from "./Sidebar";
-import Feed from "./Feed"; //geimporteerd door er op te klikken beneden.
+import Feed from "./Feed";
+import Durbuy from "./pages/Durbuy"; //geimporteerd door er op te klikken beneden.
 //die import Redirect from 'react-router-dom' , daar ging het mis. moest je nog toevoegen
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
                <div className="app_body">
                     <Sidebar />    {/*Hier moet je de components voor importeren beveiligde deel, is ook kwestie van uitzetten straks*/}
                     <Feed />
+
                </div>
                 {/*waarschijnlijk leer ik later hoe je deze hieronder weer onder de volgende components zet.*/}
                <div>
@@ -38,6 +40,9 @@ function App() {
             </Route>
             <Route path="/signup">
               <SignUp />
+            </Route>
+            <Route path="/Durbuy">
+              <Durbuy />
             </Route>
           </Switch>
         </div>

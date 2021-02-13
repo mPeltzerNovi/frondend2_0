@@ -5,11 +5,20 @@ import {AuthContext, useAuthState} from "../context/AuthContext";
 
 import SearchIcon from "@material-ui/icons/Search";
 import HomeIcon from "@material-ui/icons/Home";
-import FlagIcon from "@material-ui/icons/Flag";
+import {DirectionsWalk} from "@material-ui/icons";
+import {DirectionsBike} from "@material-ui/icons";
+import {LocationCity} from "@material-ui/icons";
+import {FilterHdr} from "@material-ui/icons";
+import {LocalDining} from "@material-ui/icons";
+
+
 import SubscriptionsOutlinedIcon from "@material-ui/icons/SubscriptionsOutlined";
 import StorefrontOutlinedIcon from "@material-ui/icons/StorefrontOutlined";
 import SupervisedUserCircleIcon from "@material-ui/icons/SupervisedUserCircle";
 import { Avatar } from "@material-ui/core";
+
+
+
 
 
 function Header() {
@@ -44,16 +53,19 @@ function Header() {
                     <HomeIcon fontSize="large" />
                 </div>
                 <div className="header_option">
-                    <FlagIcon fontSize="large" />
+                    <DirectionsBike fontSize="large" />
                 </div>
                 <div className="header_option">
-                    <SubscriptionsOutlinedIcon fontSize="large" />
+                    <LocationCity fontSize="large" />
                 </div>
                 <div className="header_option">
-                    <StorefrontOutlinedIcon fontSize="large" />
+                    <FilterHdr fontSize="large" />
                 </div>
                 <div className="header_option">
-                    <SupervisedUserCircleIcon fontSize="large" />
+                    <LocalDining fontSize="large" />
+                </div>
+                <div className="header_option">
+                    <DirectionsWalk fontSize="large" />
                 </div>
             </div>
 

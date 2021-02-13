@@ -1,5 +1,6 @@
 import React from "react";
 import Location from "../Location";
+import BookingApplicationForm from "../BookingApplicationForm";
 
 function Durbuy(){
     return (
@@ -15,6 +16,7 @@ function Durbuy(){
                 image3="https://cdn.thecrazytourist.com/wp-content/uploads/2020/02/ccimage-shutterstock_1408571276.jpg"
             />
             {/*Component boekingsverzoek maken en hier plaatsen*/}
+            <BookingApplicationForm />
         </div>
     )
 }

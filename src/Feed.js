@@ -4,6 +4,7 @@ import StoryReel from "./StoryReel";
 import MessageSender from "./MessageSender";
 import Post from "./Post";
 
+//https://www.laserinternational.org/wp-content/uploads/2016/12/Vaughn-Harrison-Hiking-in-Mexico-940x438-840x438.jpg
 
 function Feed() {
     return (
@@ -16,7 +17,8 @@ function Feed() {
                 message="Deauville was geweldig!!! Aanrader voor iederen!"
                 timestamp="This is a timestamp"
                 username="Claudia"
-                image="https://www.laserinternational.org/wp-content/uploads/2016/12/Vaughn-Harrison-Hiking-in-Mexico-940x438-840x438.jpg"
+                image="https://oya.com/wp-content/uploads/2018/08/32-melges.jpg"
+
             />
             <Post
                 profilePic="https://outdoor-and-country-res.cloudinary.com/image/upload/e_trim:2/bo_8px_solid_white/c_pad,b_white,w_1000,h_1200,f_auto,q_auto/v1581524995/product/234544.jpg"

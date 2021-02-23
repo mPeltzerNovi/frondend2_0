@@ -1,14 +1,75 @@
-import React, { useState } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import "./BookingApplicationForm.css";
+import {AuthContext, useAuthState} from "./context/AuthContext";
+import { Link, useHistory } from 'react-router-dom';
+
+
+import axios from "axios";
+
 
 
 function BookingApplicationForm() {
 
-    const [startDate, setStartDate] = useState("");
-    const [endDate, setEndDate] = useState("");
+    //Toevoeging 1
+    //const { isAuthenticated } = useState();
+
+    const [arrival, setArrival] = useState("");
+    const [departure, setDeparture] = useState("");
     const [comment, setComment] = useState("");
 
-    const handleSubmit = e => {
+    //state voor gebruikers-feedback
+    const [createUserSuccess, setCreateUserSucces] = useState(false);
+    const [loading, toggleLoading] = useState(false);
+    const [error, setError] = useState('');
+
+    //Toevoeging2
+    //const history = useHistory();
+
+    //useEffect(() => {
+    //    if (isAuthenticated === true) {
+    //        history.push('./durbuy');
+    //    }
+    //}, [isAuthenticated]);
+
+
+    async function onSubmit(event) {
+        toggleLoading(true);
+        setError('');
+        event.preventDefault();
+
+        console.log(arrival, departure, comment);
+        const token = localStorage.getItem('token');
+
+
+        try {
+            const response = await axios.post(`http://localhost:8080/bookings`, {
+                arrival: arrival,
+                departure: departure,
+                comment: comment,
+            }, {
+                headers: {
+                    "Content-Type": "application/json",
+                    Authorization: `Bearer ${token}`,
+                },
+            });
+            console.log(response);
+
+            if (response.status === 200) {
+                setCreateUserSucces(true);
+            }
+        } catch (e) {
+            console.error(e);
+
+            if (e.message.includes('400')) {
+                setError('Er bestaat al een account met deze gebruikersnaam');
+            } else {
+                setError('Er is iets misgegaan bij het zenden. Probeer het nog eens');
+            }
+        }
+        toggleLoading(false);
+    }
+
+    /*const handleSubmit = e => {
         e.preventDefault();
 
         //More clever database stuff
@@ -16,42 +77,55 @@ function BookingApplicationForm() {
         setStartDate("");
         setEndDate("");
         setComment("");
-    }
+    }*/
+
 
     return (
-        <div className="bookingApplicationForm">
-            <div className="bookingApplicationForm_top">
-                <form>
+        <>
+            <h1>Registreren</h1>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
+            {createUserSuccess === true}
+            <form className="bookingbutton" onSubmit={onSubmit}>
+
+                <label htmlFor="arrival-field">
+                    aankomstdatum:
                     <input
-                        value={startDate}
-                        onChange={(e) =>setStartDate(e.target.value)}
-                        className="bookingApplicationForm_startDate"
-                        placeholder={`Aankomstdatum`}
+                        type="text"
+                        id="arrival-field"
+                        value={arrival}
+                        onChange={(e) => setArrival(e.target.value)}
                     />
+                </label>
+
+                <label htmlFor="departure-field">
+                    vertrekdatum:
                     <input
-                        value={endDate}
-                        onChange={(e) =>setEndDate(e.target.value)}
-                        className="bookingApplicationForm_endDate"
-                        placeholder={`Vertrekdatum`}
+                        type="text"
+                        id="departure-field"
+                        value={departure}
+                        onChange={(e) => setDeparture(e.target.value)}
                     />
-                </form>
-            </div>
-            <div className="bookingApplicationForm_bottom">
-                <form>
+                </label>
+
+                <label htmlFor="comment-field">
+                    Welk huisje wil je boeken?:
                     <input
+                        type="text"
+                        id="comment-field"
                         value={comment}
-                        onChange={(e) =>setComment(e.target.value)}
-                        className="bookingApplicationForm_comment"
-                        placeholder={`Opmerkingen (of een gezellig berichtje:-))`}
-                    />
-
-                    <button onClick={handleSubmit} type="submit">
-                        Hidden submit
-                    </button>
-                </form>
-            </div>
-
-        </div>
+                        onChange={(e) => setComment(e.target.value)}/>
+                </label>
+                <button
+                    type="submit"
+                    className="form-button"
+                    disabled={loading}
+                >
+                    {loading ? 'Loading...' : 'Maak account aan'}
+                </button>
+                {error && <p>{error}</p>}
+            </form>
+            <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
+        </>
     )
 }
 

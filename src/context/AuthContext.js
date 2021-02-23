@@ -22,7 +22,8 @@ function AuthContextProvider({ children }) {
         async function getUserInfo() {
             try {
                 //We kunnen de gebruikersdata ophalen omdat we onszelf authenticeren met de token
-                const response = await axios.get('https://polar-lake-14365.herokuapp.com/api/user', {
+                const response = await axios.get(`http://localhost:8080/api/user`, {
+                //const response = await axios.get('https://polar-lake-14365.herokuapp.com/api/user', {
                         headers: {
                             "Content-Type": "application/json",
                             Authorization: `Bearer ${token}`,
@@ -105,6 +106,26 @@ function AuthContextProvider({ children }) {
     //    login: login,
     //    logout: logout,
     //};
+    //Ik vermoed dat dit het is en dat er meer bij moet.
+    /*function booking(data) {
+        //1. de token willen we in de local storage zetten
+        //localStorage.setItem('token', data.accessToken);
+
+        //2. de user-informatie willen we in de context zetten
+        setAuthState({
+            ...authState,
+            user: {
+                arrival: data.arrival,
+                departure: data.departure,
+                comment: data.comment,
+            }
+        })
+
+
+        //3. als dat allemaal gelukt is, willen we doorgelinkt worden naar de profielpagina!
+        //DIt doen we in het component dat deze functie aanroept zelf!
+    }*/
+
 
 
     return(

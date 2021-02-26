@@ -16,20 +16,39 @@ function BookingApplicationForm() {
     const [arrival, setArrival] = useState("");
     const [departure, setDeparture] = useState("");
     const [comment, setComment] = useState("");
+    //Ad1 voor baseImage (26feb 21)
+    const [baseImage, setBaseImage] = useState("");
 
     //state voor gebruikers-feedback
     const [createUserSuccess, setCreateUserSucces] = useState(false);
     const [loading, toggleLoading] = useState(false);
     const [error, setError] = useState('');
 
-    //Toevoeging2
-    //const history = useHistory();
+    //Ad2 voor baseImage:
+    const uploadImage = async (e) => {
+        const file = e.target.files[0];
+        const base64 = await convertBase64(file);
+        setBaseImage(base64);
+    };
 
-    //useEffect(() => {
-    //    if (isAuthenticated === true) {
-    //        history.push('./durbuy');
-    //    }
-    //}, [isAuthenticated]);
+    /*const convertBase64 = (file) => {
+
+        return new Promise((resolve, reject) => {
+
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+
+            fileReader.onload = (() => {
+                resolve(fileReader.result);
+            });
+
+            fileReader.onerror = ((error) => {
+                reject(error);
+            });
+        });
+    };*/
+
+    //einde input voor image 26feb 21
 
 
     async function onSubmit(event) {
@@ -37,15 +56,26 @@ function BookingApplicationForm() {
         setError('');
         event.preventDefault();
 
-        console.log(arrival, departure, comment);
+        console.log(baseImage);
+        //
+        const base64 = await convertBase64(baseImage);
+
+        console.log("base 64", base64);
+
+        console.log(arrival, departure, comment, baseImage);
+
+        //Dit is nieuw 1:
         const token = localStorage.getItem('token');
 
+        console.log("baseimage", baseImage);
 
         try {
             const response = await axios.post(`http://localhost:8080/bookings`, {
+                //Dit is nieuw 2:
                 arrival: arrival,
                 departure: departure,
                 comment: comment,
+                baseImage: base64,
             }, {
                 headers: {
                     "Content-Type": "application/json",
@@ -69,6 +99,20 @@ function BookingApplicationForm() {
         toggleLoading(false);
     }
 
+    const convertBase64 = (file) => {
+        let reader = new FileReader();
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
+
     /*const handleSubmit = e => {
         e.preventDefault();
 
@@ -82,7 +126,7 @@ function BookingApplicationForm() {
 
     return (
         <>
-            <h1>Registreren</h1>
+            <h1>Bookingsverzoek</h1>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
             {createUserSuccess === true}
             <form className="bookingbutton" onSubmit={onSubmit}>
@@ -115,6 +159,15 @@ function BookingApplicationForm() {
                         value={comment}
                         onChange={(e) => setComment(e.target.value)}/>
                 </label>
+
+                <label htmlFor="base-image-field">
+                    Upload foto:
+                    <input
+                        type="file"
+                        id="base-image-field"
+
+                        onChange={(e) => setBaseImage(e.target.files[0])}/>
+                </label>
                 <button
                     type="submit"
                     className="form-button"
@@ -123,6 +176,7 @@ function BookingApplicationForm() {
                     {loading ? 'Loading...' : 'Maak account aan'}
                 </button>
                 {error && <p>{error}</p>}
+                <img src={baseImage} height="200px" />
             </form>
             <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
         </>

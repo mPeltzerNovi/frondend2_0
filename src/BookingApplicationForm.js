@@ -127,6 +127,7 @@ function BookingApplicationForm() {
     return (
         <>
             <h1>Bookingsverzoek</h1>
+
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab alias cum debitis dolor dolore fuga id molestias qui quo unde?</p>
             {createUserSuccess === true}
             <form className="bookingbutton" onSubmit={onSubmit}>
@@ -176,11 +177,13 @@ function BookingApplicationForm() {
                     {loading ? 'Loading...' : 'Maak account aan'}
                 </button>
                 {error && <p>{error}</p>}
-                <img src={baseImage} height="200px" />
+
+                <img src={baseImage} height="200px"/>
+
             </form>
             <p>Heb je al een account? Je kunt je <Link to="/signin">hier</Link> inloggen.</p>
         </>
     )
-}
+};
 
 export default BookingApplicationForm;

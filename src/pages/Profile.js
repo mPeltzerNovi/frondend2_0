@@ -22,6 +22,12 @@ function Profile() {
     const [error, setError] = useState('');
     const [protectedData, setProtectedData] = useState('');
 
+    //Stap 1 state aanmaken voor admin view login (27feb)
+    //const [protectedAdminData, setProtectedAdminData] = useState('');-->Tweede functie stoort de derde functie; uitgezet
+    //voor derde functie
+    const [protectedUserList, setProtectedUserList] = useState([]);
+
+
     useEffect(() => {
         async function getProtectedData() {
             setError('');
@@ -54,6 +60,54 @@ function Profile() {
         getProtectedData();
     }, []);
 
+    //Stap 2: nieuwe useEffect functie maken voor aanmaken admin view login (27feb)
+    //-->Uitgezet. Deze functie stoort de derde functie en de derde functie is wat ik wil
+    //Het is de een of de ander gebruiken.
+    /*useEffect(() => {
+        async function getProtectedAdminData() {
+            setError('');
+            try {
+                const token = localStorage.getItem('token');
+                //const response = await axios.get('http://localhost:8080/api/admin/all', {
+                const response = await axios.get('http://localhost:8080/api/test/admin', {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+                setProtectedAdminData(response.data);
+            } catch (e) {
+                setError('Er is iets mis gegaan met het ophalen van de data')
+            }
+        }
+
+        if (user.roles && user.roles.includes("ROLE_ADMIN")) getProtectedAdminData();
+    }, []);*/
+
+    //Einde stap 2 (27feb).
+    //Stap 3 op 28 feb -->Get all list derde functie toevoegen
+    useEffect(() => {
+        async function getProtectedUserList() {
+            setError('');
+            try {
+                const token = localStorage.getItem('token');
+                //const response = await axios.get('http://localhost:8080/api/admin/all', {
+                //const response = await axios.get('http://localhost:8080/api/test/admin', {
+                const response = await axios.get('http://localhost:8080/api/admin/all', {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+                setProtectedUserList(response.data);
+            } catch (e) {
+                setError('Er is iets mis gegaan met het ophalen van de data')
+            }
+        }
+
+        if (user.roles && user.roles.includes("ROLE_ADMIN")) getProtectedUserList();
+    }, []);
+
     return (
         <>
             <div>
@@ -74,8 +128,17 @@ function Profile() {
                 )}
 
                 <h2>Afgeschermde content voor ingelogde gebruikers</h2>
-                {protectedData && <p>{protectedData}</p>}
-                {error && <p className="message-error">{error}</p>}
+
+                 // [1, 2, 3].map(item => {})
+                {protectedUserList.map((user) => {
+                    return (
+                        <p>{user.username}</p>
+                    )
+                })}
+
+
+                    {protectedData && <p>{protectedData}</p>}
+                    {error && <p className="message-error">{error}</p>}
                 <p>Terug naar de <Link to="/">Homepagina</Link></p>
 
             </div>

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, {useContext, useEffect, useState} from 'react';
+import {Link, useHistory} from 'react-router-dom';
 import {useAuthState} from "../context/AuthContext";
 import axios from "axios";
 
@@ -8,10 +8,12 @@ import axios from "axios";
 
 function Profile() {
     const { user } = useAuthState();
+
+
     //const { Sidebar } = useState(); //Dit heb ik er ook achter gezet
     //const { admin } = useState();
 
-    //Wil je beschermde data uitlezen? stap 4 in de backend handleiding op film 02:28:30/ ->Stap 8 Nova
+    //Wil je beschermde data u()itlezen? stap 4 in de backend handleiding op film 02:28:30/ ->Stap 8 Nova
     //Dan zet je hier weer een useEffect met lege [] dependency array
     //asynchrome functie met try/catch
     //maar in het request stuur je de token die in de local storage staat, mee
@@ -26,6 +28,35 @@ function Profile() {
     //const [protectedAdminData, setProtectedAdminData] = useState('');-->Tweede functie stoort de derde functie; uitgezet
     //voor derde functie
     const [protectedUserList, setProtectedUserList] = useState([]);
+    //-->Test met extra admin functie 1maart
+    const [protectedAdminData, setProtectedAdminData] = useState('');
+
+    //-->Test useState voor comment uit booking halen en dat is een array
+    const [protectedBookingList, setProtectedBookingList] = useState([]);
+
+    useEffect(() => {
+        async function getProtectedBookingList() {
+            setError('');
+            try {
+                const token = localStorage.getItem('token');
+                const response = await axios.get('http://localhost:8080/bookings',  {
+                    headers: {
+                        "Content-Type": "application/json",
+                        Authorization: `Bearer ${token}`,
+                    }
+                });
+                setProtectedBookingList(response.data);
+            } catch (e) {
+                setError('Er is iets mis gegaan met het ophalen van de data')
+            }
+        }
+
+        if (user.roles && user.roles.includes("ROLE_ADMIN")) getProtectedBookingList();
+    }, []);
+
+
+
+
 
 
     useEffect(() => {
@@ -63,7 +94,7 @@ function Profile() {
     //Stap 2: nieuwe useEffect functie maken voor aanmaken admin view login (27feb)
     //-->Uitgezet. Deze functie stoort de derde functie en de derde functie is wat ik wil
     //Het is de een of de ander gebruiken.
-    /*useEffect(() => {
+    useEffect(() => {
         async function getProtectedAdminData() {
             setError('');
             try {
@@ -82,7 +113,7 @@ function Profile() {
         }
 
         if (user.roles && user.roles.includes("ROLE_ADMIN")) getProtectedAdminData();
-    }, []);*/
+    }, []);
 
     //Einde stap 2 (27feb).
     //Stap 3 op 28 feb -->Get all list derde functie toevoegen
@@ -93,7 +124,7 @@ function Profile() {
                 const token = localStorage.getItem('token');
                 //const response = await axios.get('http://localhost:8080/api/admin/all', {
                 //const response = await axios.get('http://localhost:8080/api/test/admin', {
-                const response = await axios.get('http://localhost:8080/api/admin/all', {
+                const response = await axios.get('http://localhost:8080/api/admin/all',  {
                     headers: {
                         "Content-Type": "application/json",
                         Authorization: `Bearer ${token}`,
@@ -107,6 +138,9 @@ function Profile() {
 
         if (user.roles && user.roles.includes("ROLE_ADMIN")) getProtectedUserList();
     }, []);
+
+
+
 
     return (
         <>
@@ -136,8 +170,20 @@ function Profile() {
                     )
                 })}
 
+                //In de return:
+                {protectedBookingList.map((booking) => {
+                    return (
+                        <p>{booking.comment}</p>
+                    )
+                })}
 
+
+
+
+
+                    //standaard teruggaves
                     {protectedData && <p>{protectedData}</p>}
+                    {protectedAdminData && <p>{protectedAdminData}</p>}
                     {error && <p className="message-error">{error}</p>}
                 <p>Terug naar de <Link to="/">Homepagina</Link></p>
 

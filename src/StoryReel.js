@@ -18,27 +18,37 @@ function StoryReel() {
                 />
             </button>
 
-            <Story
-                image="https://images.trvl-media.com/media/content/shared/images/travelguides/destination/2114/London-City-Hall-167154.jpg"
-                profileSrc="https://s1.thcdn.com/productimg/600/600/11319445-1134415917821882.jpg"
-                title="London"
-            />
-            <Story
-                image="https://www.planetware.com/photos-large/D/germany-garmisch-partenkirchen-grainau.jpg"
-                profileSrc="https://getthelabel.btxmedia.com/pws/client/images/catalogue/products/dq2617/zoom/dq2617_red_1.jpg"
-                title="Garmisch"
-            />
-            <Story
-                image="https://i.pinimg.com/736x/9f/56/7d/9f567deb0d9a63c3f81aa43a0a99141d.jpg"
-                profileSrc="https://www.bike24.com/i/p/5/7/334075_02_d.jpg"
-                title="Deauville"
-            />
-            <Story
-                image="https://www.ohmyfoodness.nl/wp-content/uploads/2018/12/Hattem-1.jpg"
-                profileSrc="https://www.prodirectrunning.com/ProductImages/Main/216470_Main_Thumb_0647241.jpg"
-                title="Hattem"
-            />
+            <button type="storyReel_button" onClick={() => history.push('/London')}>
+                <Story
+                    image="https://images.trvl-media.com/media/content/shared/images/travelguides/destination/2114/London-City-Hall-167154.jpg"
+                    profileSrc="https://s1.thcdn.com/productimg/600/600/11319445-1134415917821882.jpg"
+                    title="London"
+                />
+            </button>
 
+            <button type="storyReel_button" onClick={() => history.push('/Garmisch')}>
+                <Story
+                    image="https://www.planetware.com/photos-large/D/germany-garmisch-partenkirchen-grainau.jpg"
+                    profileSrc="https://getthelabel.btxmedia.com/pws/client/images/catalogue/products/dq2617/zoom/dq2617_red_1.jpg"
+                    title="Garmisch"
+                />
+            </button>
+
+            <button type="storyReel_button" onClick={() => history.push('/Deauville')}>
+                <Story
+                    image="https://i.pinimg.com/736x/9f/56/7d/9f567deb0d9a63c3f81aa43a0a99141d.jpg"
+                    profileSrc="https://www.bike24.com/i/p/5/7/334075_02_d.jpg"
+                    title="Deauville"
+                />
+            </button>
+
+            <button type="storyReel_buttom" onClick={() => history.push('/Hattem')}>
+                <Story
+                    image="https://www.ohmyfoodness.nl/wp-content/uploads/2018/12/Hattem-1.jpg"
+                    profileSrc="https://www.prodirectrunning.com/ProductImages/Main/216470_Main_Thumb_0647241.jpg"
+                    title="Hattem"
+                />
+            </button>
 
         </div>
     )

@@ -1,8 +1,15 @@
 import React from "react";
+
+
 import Location from "../Location";
 import BookingApplicationForm from "../BookingApplicationForm";
 
 function Durbuy(){
+
+
+
+
+
     return (
         <div className='feed'>
             <Location
@@ -17,6 +24,8 @@ function Durbuy(){
             />
             {/*Component boekingsverzoek maken en hier plaatsen*/}
             <BookingApplicationForm />
+
+
         </div>
     )
 }

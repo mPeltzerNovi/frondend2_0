@@ -17,7 +17,7 @@ function Feed() {
                 message="Deauville was geweldig!!! Aanrader voor iederen!"
                 timestamp="This is a timestamp"
                 username="Claudia"
-                image="https://oya.com/wp-content/uploads/2018/08/32-melges.jpg"
+                image="https://acupoflife.nl/wp-content/uploads/2014/01/Screen-Shot-2014-01-09-at-21.50.57.jpg"
 
             />
             <Post
@@ -31,6 +31,6 @@ function Feed() {
 
         </div>
     )
-};
+}
 
 export default Feed;

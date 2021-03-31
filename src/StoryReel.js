@@ -3,7 +3,7 @@ import "./StoryReel.css";
 import Story from "./Story";
 
 import { useHistory } from 'react-router-dom';
-
+//Zoiets kan je ook wel maken met de sidebar op deze manier verwacht ik.
 function StoryReel() {
 
     const history = useHistory();
@@ -49,6 +49,8 @@ function StoryReel() {
                     title="Hattem"
                 />
             </button>
+
+
 
         </div>
     )

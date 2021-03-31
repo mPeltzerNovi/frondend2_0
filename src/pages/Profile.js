@@ -9,6 +9,8 @@ import axios from "axios";
 function Profile() {
     const { user } = useAuthState();
 
+    const { booking } = useAuthState();
+
 
     //const { Sidebar } = useState(); //Dit heb ik er ook achter gezet
     //const { admin } = useState();
@@ -45,9 +47,13 @@ function Profile() {
                         Authorization: `Bearer ${token}`,
                     }
                 });
-                setProtectedBookingList(response.data);
+                //Hier kan je dan console.logen om te kijken wat hij teruggeeft.
+                setProtectedBookingList(response.data);  //Er stond response.data
+                console.log(response.data);              //er stond response.data
+                //toggleLoading kan je ook nog toevoegen
             } catch (e) {
-                setError('Er is iets mis gegaan met het ophalen van de data')
+                console.error(e);
+                setError('Er is iets mis gegaan met het ophalen van de data');
             }
         }
 
@@ -131,6 +137,7 @@ function Profile() {
                     }
                 });
                 setProtectedUserList(response.data);
+                console.log(response.data);
             } catch (e) {
                 setError('Er is iets mis gegaan met het ophalen van de data')
             }
@@ -167,15 +174,24 @@ function Profile() {
                 {protectedUserList.map((user) => {
                     return (
                         <p>{user.username}</p>
+
                     )
                 })}
 
-                //In de return:
+                // [1, 2, 3].map(item => {})
                 {protectedBookingList.map((booking) => {
                     return (
-                        <p>{booking.comment}</p>
+                        <p>{booking.username}</p>
+
                     )
                 })}
+
+
+
+
+
+
+
 
 
 

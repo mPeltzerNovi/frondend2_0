@@ -14,7 +14,9 @@ import London from "./pages/London"; //geimporteerd door er op te klikken benede
 import Garmisch from "./pages/Garmisch";
 import Deauville from "./pages/Deauville";
 import Hattem from "./pages/Hattem";
+
 //die import Redirect from 'react-router-dom' , daar ging het mis. moest je nog toevoegen
+//Met werkenden firebase
 
 function App() {
   const { isAuthenticated } = useAuthState();
@@ -60,6 +62,8 @@ function App() {
               <Route path="/Hattem">
                   <Hattem />
               </Route>
+
+
 
           </Switch>
         </div>
